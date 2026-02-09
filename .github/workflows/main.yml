@@ -4,12 +4,16 @@ on:
     branches: [ main ]
 
 permissions:
-  id-token: write  # OIDC ke liye zaroori hai
+  id-token: write  # Top level permissions
   contents: read
 
 jobs:
   DeployJob:
     runs-on: ubuntu-latest
+    # YAHAN ADD KAREIN: Job level permissions
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
